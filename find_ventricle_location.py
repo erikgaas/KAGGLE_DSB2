@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 '''
 Code to find center of left ventricle using only DICOM data
+Part of 8th place solution. Author: ZFTurbo
 '''
 
 import numpy as np
@@ -372,12 +373,13 @@ def find_geometry_params(start, end, split, input_data_path, output_data_path):
     json.dump(store,f)
     f.close()
 
-# Code will look for train and validate folders
+# Put train and validate folders here
 input_data_path = os.path.join('..', 'initial_data')
+# Results will be stored in thid folder
 output_data_path = os.path.join('..', 'calc')
 
 start, end, split = get_start_end_patients('all', input_data_path)
-# find_geometry_params(start, end, split, input_data_path, output_data_path)
+find_geometry_params(start, end, split, input_data_path, output_data_path)
 centers = get_all_centers(start, end, 0)
 out_path = os.path.join(output_data_path, 'center_points.json')
 store_centers(centers, out_path)
