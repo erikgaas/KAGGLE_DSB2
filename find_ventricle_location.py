@@ -240,13 +240,13 @@ def calc_stupid_intersection(p1, p2, p3, p4):
 
     print(p1, p2, p3, p4)
 
-    s1 = (p2[1] - p1[1]) / (p2[0] - p1[0])
-    s2 = (p4[1] - p3[1]) / (p4[0] - p3[0])
+    s1 = (1.0*p2[1] - p1[1]) / (p2[0] - p1[0])
+    s2 = (1.0*p4[1] - p3[1]) / (p4[0] - p3[0])
 
     b1 = p2[1] - (s1 * p2[0])
     b2 = p4[1] - (s2 * p4[0])
 
-    x_coord = (b2-b1) / (s1-s2)
+    x_coord = (1.0*b2-b1) / (s1-s2)
     y_coord = x_coord*s1 + b1
     print((int(round(x_coord)), int(round(y_coord))))
     return (int(round(x_coord)), int(round(y_coord)))
