@@ -300,7 +300,10 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom):
     #cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
     #cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
     # show_image(img)
-    cv2.imwrite(os.path.join(debug_folder, str(id) + '_' + sax + '.jpg'), img)
+    if center[0] > 0 and center[1] > 0:
+        cv2.imwrite(os.path.join(debug_folder, str(id) + '_' + sax + '.jpg'), img)
+    else:
+        pass
 
 
 def get_centers_for_test(id, geom, debug):
