@@ -17,6 +17,7 @@ import re
 import json
 import glob
 import dicom
+import simplejson
 
 
 def perp(a):
@@ -280,11 +281,11 @@ def get_centers_for_test(id, geom, debug):
 
 # Read file with DCM geometry
 def read_geometry_file():
-    json_path = os.path.join('..', 'calc', 'geometry.json')
+    json_path = '/scratch/gaas0012/calc/geometry.json'#os.path.join('..', 'calc', 'geometry.json')
     geom = dict()
     if os.path.isfile(json_path):
         f = open(json_path, 'r')
-        geom = json.load(f)
+        geom = simplejson.loads(f.read())
         f.close()
     keys = list(geom.keys())
     for el in keys:
@@ -297,6 +298,7 @@ def read_geometry_file():
 def get_all_centers(start, end, debug):
     centers = dict()
     geom = read_geometry_file()
+    print(geom)
     for i in range(start, end+1):
         centers[i] = get_centers_for_test(i, geom[i], debug)
     return centers
@@ -342,11 +344,9 @@ def find_geometry_params(start, end, split, input_data_path, output_data_path):
     for i in range(start, end+1):
         store[i] = dict()
         type = 'train'
-        if i > split:
-            type = 'validate'
         path = os.path.join(input_data_path, type, str(i), 'study', '*')
         dcm_files = glob.glob(path)
-        print('Total files found for test ' + str(i) + ': ' + str(len(dcm_files)))
+#        print('Total files found for test ' + str(i) + ': ' + str(len(dcm_files)))
 
         for d_dir in dcm_files:
             print('Read single DCMs for test' + str(i) + ': ' + d_dir)
