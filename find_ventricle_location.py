@@ -231,6 +231,18 @@ def convert_to_grayscale_with_increase_brightness_fast(im, incr):
 
    return out
 
+def calc_stupid_intersection(p1, p2, p3, p4):
+    s1 = (p2[1] - p1[1]) / (p2[0] - p1[0])
+    s2 = (p4[1] - p4[1]) / (p3[0] - p3[0])
+
+    b1 = p2[1] - (s1 * p2[0])
+    b2 = p4[1] - (s1 * p4[0])
+
+    x_coord = (b2-b1) / (s2-s1)
+    y_coord = x_coord*s1 + b1
+    return (int(round(x_coord)), int(round(y_coord)))
+
+
 def calculate_consistent_square(img, geom, center):
     square_dim = 150.0
     row_spacing = geom['PixelSpacing'][0]
@@ -267,7 +279,7 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom):
     #                         np.array([points[5], points[4]]),
     #                         np.array([points[7], points[6]]))
 
-    center = seg_intersect(np.array([points[1], points[0]]), 
+    center = calc_stupid_intersection(np.array([points[1], points[0]]), 
                             np.array([points[3], points[2]]),
                             np.array([points[5], points[4]]),
                             np.array([points[7], points[6]]))
@@ -275,7 +287,7 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom):
     img = calculate_consistent_square(img, geom, center)
     #cv2.circle(img, (int(round(point[1], 0)), int(round(point[0], 0))), 5, 255, 3)
 
-    cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
+    #cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
     #cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
     # show_image(img)
     cv2.imwrite(os.path.join(debug_folder, str(id) + '_' + sax + '.jpg'), img)
