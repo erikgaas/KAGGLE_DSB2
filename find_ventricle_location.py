@@ -238,7 +238,7 @@ def calc_stupid_intersection(p1, p2, p3, p4):
     p3 = list(reversed([p3[0], p3[1]]))
     p4 = list(reversed([p4[0], p4[1]]))
 
-    print(p1, p2, p3, p4)
+    #print(p1, p2, p3, p4)
 
     s1 = (1.0*p2[1] - p1[1]) / (p2[0] - p1[0])
     s2 = (1.0*p4[1] - p3[1]) / (p4[0] - p3[0])
@@ -248,7 +248,7 @@ def calc_stupid_intersection(p1, p2, p3, p4):
 
     x_coord = (1.0*b2-b1) / (s1-s2)
     y_coord = x_coord*s1 + b1
-    print((int(round(x_coord)), int(round(y_coord))))
+    #print((int(round(x_coord)), int(round(y_coord))))
     return (int(round(x_coord)), int(round(y_coord)))
 
 
@@ -259,7 +259,7 @@ def calculate_consistent_square(img, geom, center):
 
     row_px = int(round(square_dim / row_spacing))
     col_px = int(round(square_dim / col_spacing))
-    print(center)
+    #print(center)
 
     top_left_corner = [round(center[0] - (row_px / 2.0)), round(center[1] - (col_px / 2.0))]
     # row_side_pixels = round(square_dim / row_px)
@@ -294,11 +294,11 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom):
         [points[5], points[4]],
         [points[7], points[6]])
 
-    calculate_consistent_square(img, geom, center)
+    img = calculate_consistent_square(img, geom, center)
     #cv2.circle(img, (int(round(point[1], 0)), int(round(point[0], 0))), 5, 255, 3)
 
-    cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
-    cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
+    #cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
+    #cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
     # show_image(img)
     cv2.imwrite(os.path.join(debug_folder, str(id) + '_' + sax + '.jpg'), img)
 
