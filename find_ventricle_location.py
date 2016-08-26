@@ -285,7 +285,7 @@ def read_geometry_file():
     geom = dict()
     if os.path.isfile(json_path):
         f = open(json_path, 'r')
-        geom = simplejson.loads(f.read())
+        geom = simplejson.loads(f)
         f.close()
     keys = list(geom.keys())
     for el in keys:
