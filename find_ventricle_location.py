@@ -377,7 +377,7 @@ def find_geometry_params(start, end, split, input_data_path, output_data_path):
                     break
 
     f = open(json_path, 'w')
-    json.dump(store,f)
+    simplejson.dump(store,f)
     f.close()
 
 # Put train and validate folders here
