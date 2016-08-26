@@ -302,7 +302,6 @@ def get_centers_for_test(id, geom, debug):
                                       (point_ch2_1_row, point_ch2_1_col, point_ch2_2_row, point_ch2_2_col,
                                        point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col), geom[el])
                 except:
-                    sys.exit(0)
                     print('Problem with calculation here!')
                     center[el] = [-1, -1]
 
