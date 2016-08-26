@@ -298,7 +298,7 @@ def read_geometry_file():
 def get_all_centers(start, end, debug):
     centers = dict()
     geom = read_geometry_file()
-    print(geom)
+    #print(geom)
     for i in range(start, end+1):
         centers[i] = get_centers_for_test(i, geom[i], debug)
     return centers
@@ -306,7 +306,7 @@ def get_all_centers(start, end, debug):
 
 def store_centers(centers, path):
     f = open(path, 'w')
-    json.dump(centers, f)
+    simplejson.dumps(centers, f)
     f.close()
 
 
@@ -377,7 +377,7 @@ def find_geometry_params(start, end, split, input_data_path, output_data_path):
                     break
 
     f = open(json_path, 'w')
-    simplejson.dump(store,f)
+    simplejson.dumps(store,f)
     f.close()
 
 # Put train and validate folders here
