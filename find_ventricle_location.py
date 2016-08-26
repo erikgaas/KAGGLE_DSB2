@@ -243,7 +243,7 @@ def calculate_consistent_square(img, geom, center):
     # row_side_pixels = round(square_dim / row_px)
     # col_side_pixels = round(square_dim / col_px)
 
-    print(center)
+    # print(center)
 
 
 
@@ -262,20 +262,20 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom):
     ds = dicom.read_file(dcm_path)
     img = convert_to_grayscale_with_increase_brightness_fast(ds.pixel_array, 1)
 
-    print(np.array([points[1], points[0]]), 
-                            np.array([points[3], points[2]]),
-                            np.array([points[5], points[4]]),
-                            np.array([points[7], points[6]]))
-    
+    # print(np.array([points[1], points[0]]), 
+    #                         np.array([points[3], points[2]]),
+    #                         np.array([points[5], points[4]]),
+    #                         np.array([points[7], points[6]]))
+
     center = seg_intersect(np.array([points[1], points[0]]), 
                             np.array([points[3], points[2]]),
                             np.array([points[5], points[4]]),
                             np.array([points[7], points[6]]))
 
-    img = calculate_consistent_square(img, geom, center)
+    #img = calculate_consistent_square(img, geom, center)
     #cv2.circle(img, (int(round(point[1], 0)), int(round(point[0], 0))), 5, 255, 3)
 
-    #cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
+    cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
     #cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
     # show_image(img)
     cv2.imwrite(os.path.join(debug_folder, str(id) + '_' + sax + '.jpg'), img)
