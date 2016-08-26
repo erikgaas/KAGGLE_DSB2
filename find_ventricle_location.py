@@ -251,10 +251,10 @@ def calculate_consistent_square(img, geom, center):
     print(top_left_corner)
     print(row_side_pixels)
     print(col_side_pixels)
-    print(img.shape)
+    #print(img.shape)
 
     img = img[top_left_corner:top_left_corner+row_side_pixels, top_left_corner:top_left_corner+col_side_pixels]
-    print(img.shape)
+    #print(img.shape)
     sys.exit(0)
     return img
 
