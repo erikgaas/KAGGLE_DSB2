@@ -21,4 +21,6 @@ def calc_stupid_intersection(p1, p2, p3, p4):
     return (int(round(x_coord)), int(round(y_coord)))
 
 
+print(p1, p2, p3, p4)
+
 print(calc_stupid_intersection(p1, p2, p3, p4))
