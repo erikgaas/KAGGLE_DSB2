@@ -277,7 +277,7 @@ def calculate_consistent_square(img, geom, center):
 
 
 
-def draw_center_for_check(dcm_path, id, sax, point, points, geom):
+def draw_center_for_check(dcm_path, id, sax, point, points, geom, dcm_ext):
     debug_folder = '/scratch/gaas0012/calc/center_find'#os.path.join('..', 'calc', 'center_find')
     if not os.path.isdir(debug_folder):
         os.mkdir(debug_folder)
@@ -301,7 +301,7 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom):
     #cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
     # show_image(img)
     if center[0] > 0 and center[1] > 0:
-        cv2.imwrite(os.path.join(debug_folder, str(id) + '_' + sax + '.jpg'), img)
+        cv2.imwrite(os.path.join(debug_folder, str(id) + '_' + sax + '_' + dcm_ext + '.jpg'), img)
     else:
         pass
 
@@ -335,11 +335,9 @@ def get_centers_for_test(id, geom, debug):
                         curr_paths = glob.glob((os.sep).join(my_path[0:-1]))
                         for each_file in curr_paths:
                             dcm_file_ext = each_file[-1].split('.')[0]
-
-                            print(geom[el]['Path'])
-                            draw_center_for_check(geom[el]['Path'], str(id)+dcm_file_ext, el, center[el],
+                            draw_center_for_check(each_file, id, el, center[el],
                                           (point_ch2_1_row, point_ch2_1_col, point_ch2_2_row, point_ch2_2_col,
-                                           point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col), geom[el])
+                                           point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col), geom[el], dcm_file_ext)
                 except:
                    print('Problem with calculation here!')
                    center[el] = [-1, -1]
