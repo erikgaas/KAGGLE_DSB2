@@ -18,6 +18,7 @@ import json
 import glob
 import dicom
 import simplejson
+import sys
 
 
 def perp(a):
@@ -242,7 +243,19 @@ def calculate_consistent_square(img, geom, center):
     row_side_pixels = round(square_dim / row_px)
     col_side_pixels = round(square_dim / col_px)
 
+
+    print(row_spacing)
+    print(col_spacing)
+    print(row_px)
+    print(col_px)
+    print(top_left_corner)
+    print(row_side_pixels)
+    print(col_side_pixels)
+    print(img.shape)
+
     img = img[top_left_corner:top_left_corner+row_side_pixels, top_left_corner:top_left_corner+col_side_pixels]
+    print(img.shape)
+    sys.exit(0)
     return img
 
 
