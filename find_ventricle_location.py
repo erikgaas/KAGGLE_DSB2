@@ -244,16 +244,12 @@ def calculate_consistent_square(img, geom, center):
     # col_side_pixels = round(square_dim / col_px)
 
     print(center)
-    print(row_spacing)
-    print(col_spacing)
-    print(row_px)
-    print(col_px)
-    print(top_left_corner)
 
-    print(img.shape)
+
+
 
     img = img[top_left_corner[0]:top_left_corner[0]+row_px, top_left_corner[1]:top_left_corner[1]+col_px]
-    print(img.shape)
+
     return img
 
 
@@ -266,7 +262,11 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom):
     ds = dicom.read_file(dcm_path)
     img = convert_to_grayscale_with_increase_brightness_fast(ds.pixel_array, 1)
 
-
+    print(np.array([points[1], points[0]]), 
+                            np.array([points[3], points[2]]),
+                            np.array([points[5], points[4]]),
+                            np.array([points[7], points[6]]))
+    
     center = seg_intersect(np.array([points[1], points[0]]), 
                             np.array([points[3], points[2]]),
                             np.array([points[5], points[4]]),
