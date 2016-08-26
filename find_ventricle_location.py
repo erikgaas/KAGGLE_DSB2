@@ -267,7 +267,7 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom):
     ds = dicom.read_file(dcm_path)
     img = convert_to_grayscale_with_increase_brightness_fast(ds.pixel_array, 1)
     #img = calculate_consistent_square(img, geom, (int(round(point[1], 0)), int(round(point[0], 0))))
-    cv2.circle(img, (int(round(point[1], 0)), int(round(point[0], 0))), 5, 255, 3)
+    cv2.circle(img, (int(round(point[0], 0)), int(round(point[1], 0))), 5, 255, 3)
 
     #cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
     #cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
