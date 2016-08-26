@@ -230,17 +230,35 @@ def convert_to_grayscale_with_increase_brightness_fast(im, incr):
 
    return out
 
+def calculate_consistent_square(img, geom, center):
+    square_dim = 200.0
+    row_spacing = geom['PixelSpacing'][0]
+    col_spacing = geom['PixelSpacing'][1]
 
-def draw_center_for_check(dcm_path, id, sax, point, points):
+    row_px = int(round(square_dim / row_spacing))
+    col_px = int(round(square_dim / col_spacing))
+
+    top_left_corner = [round(center[0] - (square_dim / 2.0)), round(center[1] - (square_dim / 2.0))]
+    row_side_pixels = round(square_dim / row_px)
+    col_side_pixels = round(square_dim / col_px)
+
+    img = img[top_left_corner:top_left_corner+row_side_pixels, top_left_corner:top_left_corner+col_side_pixels]
+    return img
+
+
+
+
+def draw_center_for_check(dcm_path, id, sax, point, points, geom):
     debug_folder = '/scratch/gaas0012/calc/center_find'#os.path.join('..', 'calc', 'center_find')
     if not os.path.isdir(debug_folder):
         os.mkdir(debug_folder)
     ds = dicom.read_file(dcm_path)
     img = convert_to_grayscale_with_increase_brightness_fast(ds.pixel_array, 1)
-    cv2.circle(img, (int(round(point[1], 0)), int(round(point[0], 0))), 5, 255, 3)
+    img = calculate_consistent_square(img, geom, (int(round(point[1], 0)), int(round(point[0], 0))))
+    #cv2.circle(img, (int(round(point[1], 0)), int(round(point[0], 0))), 5, 255, 3)
 
-    cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
-    cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
+    #cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
+    #cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
     # show_image(img)
     cv2.imwrite(os.path.join(debug_folder, str(id) + '_' + sax + '.jpg'), img)
 
@@ -270,7 +288,7 @@ def get_centers_for_test(id, geom, debug):
                     if debug == 1:
                         draw_center_for_check(geom[el]['Path'], id, el, center[el],
                                       (point_ch2_1_row, point_ch2_1_col, point_ch2_2_row, point_ch2_2_col,
-                                       point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col))
+                                       point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col), geom)
                 except:
                     print('Problem with calculation here!')
                     center[el] = [-1, -1]
