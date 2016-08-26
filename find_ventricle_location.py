@@ -253,7 +253,7 @@ def calc_stupid_intersection(p1, p2, p3, p4):
 
 
 def calculate_consistent_square(img, geom, center):
-    square_dim = 120.0
+    square_dim = 140.0
     row_spacing = geom['PixelSpacing'][0]
     col_spacing = geom['PixelSpacing'][1]
 
@@ -326,6 +326,7 @@ def get_centers_for_test(id, geom, debug):
                         = find_intersections_point(geom[el], geom[ch2_el], geom[ch4_el])
 
                     if debug == 1:
+                        print(geom[el]['Path'])
                         draw_center_for_check(geom[el]['Path'], id, el, center[el],
                                       (point_ch2_1_row, point_ch2_1_col, point_ch2_2_row, point_ch2_2_col,
                                        point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col), geom[el])
