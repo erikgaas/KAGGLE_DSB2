@@ -240,7 +240,7 @@ def draw_center_for_check(dcm_path, id, sax, point, points):
     cv2.circle(img, (int(round(point[1], 0)), int(round(point[0], 0))), 5, 255, 3)
     img = cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
     img = cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
-    print(img.shape)
+    print(type(img))
     # show_image(img)
     cv2.imwrite(os.path.join(debug_folder, str(id) + '_' + sax + '.jpg'), img)
 
