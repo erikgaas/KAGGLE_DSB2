@@ -322,6 +322,7 @@ def get_start_end_patients(type, input_data_path):
         dirs += os.listdir(path)
     else:
         path = os.path.join(input_data_path, type)
+        print(path)
         dirs = os.listdir(path)
     min = int(dirs[0])
     max = int(dirs[0])
