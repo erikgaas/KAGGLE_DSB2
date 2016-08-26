@@ -298,18 +298,18 @@ def get_centers_for_test(id, geom, debug):
         for el in geom:
             if el != ch2_el and el != ch4_el:
                 print('Start extraction for test {} sax {}'.format(id, el))
-#            try:
-                center[el], point_ch2_1_row, point_ch2_1_col, point_ch2_2_row, point_ch2_2_col, \
-                point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col \
-                    = find_intersections_point(geom[el], geom[ch2_el], geom[ch4_el])
+                try:
+                    center[el], point_ch2_1_row, point_ch2_1_col, point_ch2_2_row, point_ch2_2_col, \
+                    point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col \
+                        = find_intersections_point(geom[el], geom[ch2_el], geom[ch4_el])
 
-                if debug == 1:
-                    draw_center_for_check(geom[el]['Path'], id, el, center[el],
-                                  (point_ch2_1_row, point_ch2_1_col, point_ch2_2_row, point_ch2_2_col,
-                                   point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col), geom[el])
-#            except:
-#                print('Problem with calculation here!')
-#                center[el] = [-1, -1]
+                    if debug == 1:
+                        draw_center_for_check(geom[el]['Path'], id, el, center[el],
+                                      (point_ch2_1_row, point_ch2_1_col, point_ch2_2_row, point_ch2_2_col,
+                                       point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col), geom[el])
+                except:
+                   print('Problem with calculation here!')
+                   center[el] = [-1, -1]
 
     else:
         print('Test {} miss 2ch or 4ch view of heart!'.format(id))
