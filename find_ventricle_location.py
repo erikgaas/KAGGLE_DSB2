@@ -238,7 +238,7 @@ def calc_stupid_intersection(p1, p2, p3, p4):
     b1 = p2[1] - (s1 * p2[0])
     b2 = p4[1] - (s1 * p4[0])
 
-    x_coord = (b2-b1) / (s2-s1)
+    x_coord = (b2-b1) / (s1-s2)
     y_coord = x_coord*s1 + b1
     return (int(round(x_coord)), int(round(y_coord)))
 
