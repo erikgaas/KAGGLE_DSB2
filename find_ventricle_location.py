@@ -250,6 +250,7 @@ def calculate_consistent_square(img, geom, center):
 
     row_px = int(round(square_dim / row_spacing))
     col_px = int(round(square_dim / col_spacing))
+    print(center)
 
     top_left_corner = [round(center[0] - (row_px / 2.0)), round(center[1] - (col_px / 2.0))]
     # row_side_pixels = round(square_dim / row_px)
