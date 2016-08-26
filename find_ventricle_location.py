@@ -16,7 +16,7 @@ import cv2
 import re
 import json
 import glob
-import pydicom
+import dicom
 
 
 def perp(a):
@@ -234,7 +234,7 @@ def draw_center_for_check(dcm_path, id, sax, point, points):
     debug_folder = os.path.join('..', 'calc', 'center_find')
     if not os.path.isdir(debug_folder):
         os.mkdir(debug_folder)
-    ds = pydicom.read_file(dcm_path)
+    ds = dicom.read_file(dcm_path)
     img = convert_to_grayscale_with_increase_brightness_fast(ds.pixel_array, 1)
     cv2.circle(img, (int(round(point[1], 0)), int(round(point[0], 0))), 5, 255, 3)
     img = cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
@@ -355,7 +355,7 @@ def find_geometry_params(start, end, split, input_data_path, output_data_path):
                 dcm_path = os.path.join(d_dir, dcm)
                 if (os.path.isfile(dcm_path)):
                     print('Reading file: ' + dcm_path)
-                    ds = pydicom.read_file(dcm_path)
+                    ds = dicom.read_file(dcm_path)
                     store[i][sax_name] = dict()
                     store[i][sax_name]['ImageOrientationPatient'] = (ds.ImageOrientationPatient[0],
                                                                      ds.ImageOrientationPatient[1],
