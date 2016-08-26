@@ -232,6 +232,12 @@ def convert_to_grayscale_with_increase_brightness_fast(im, incr):
    return out
 
 def calc_stupid_intersection(p1, p2, p3, p4):
+    p1 = np.fliplr(p1)
+    p2 = np.fliplr(p2)
+    p3 = np.fliplr(p3)
+    p4 = np.fliplr(p4)
+
+    
     s1 = (p2[1] - p1[1]) / (p2[0] - p1[0])
     s2 = (p4[1] - p3[1]) / (p4[0] - p3[0])
 

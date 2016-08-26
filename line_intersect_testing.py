@@ -1,7 +1,7 @@
-p1 = [-70, -246]
-p2 = [164, 367]
-p3 = [238, 18]
-p4 = [-101, 245]
+p1 = list(reversed([-70, -246]))
+p2 = list(reversed([164, 367]))
+p3 = list(reversed([238, 18]))
+p4 = list(reversed([-101, 245]))
 
 
 
