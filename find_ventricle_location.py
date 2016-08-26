@@ -380,11 +380,11 @@ def find_geometry_params(start, end, split, input_data_path, output_data_path):
     f.close()
 
 # Put train and validate folders here
-input_data_path = os.path.join('..', 'initial_data')
+input_data_path = '..'
 # Results will be stored in this folder
-output_data_path = os.path.join('..', 'calc')
+output_data_path = '/scratch/gaas0012/calc'
 
-start, end, split = get_start_end_patients('all', input_data_path)
+start, end, split = get_start_end_patients('train', input_data_path)
 find_geometry_params(start, end, split, input_data_path, output_data_path)
 centers = get_all_centers(start, end, 1)
 out_path = os.path.join(output_data_path, 'center_points.json')
