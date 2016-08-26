@@ -232,16 +232,16 @@ def convert_to_grayscale_with_increase_brightness_fast(im, incr):
    return out
 
 def calculate_consistent_square(img, geom, center):
-    square_dim = 200.0
+    square_dim = 150.0
     row_spacing = geom['PixelSpacing'][0]
     col_spacing = geom['PixelSpacing'][1]
 
     row_px = int(round(square_dim / row_spacing))
     col_px = int(round(square_dim / col_spacing))
 
-    top_left_corner = [round(center[0] - (square_dim / 2.0)), round(center[1] - (square_dim / 2.0))]
-    row_side_pixels = round(square_dim / row_px)
-    col_side_pixels = round(square_dim / col_px)
+    top_left_corner = [round(center[0] - (row_px / 2.0)), round(center[1] - (col_px / 2.0))]
+    # row_side_pixels = round(square_dim / row_px)
+    # col_side_pixels = round(square_dim / col_px)
 
 
     print(row_spacing)
@@ -249,11 +249,10 @@ def calculate_consistent_square(img, geom, center):
     print(row_px)
     print(col_px)
     print(top_left_corner)
-    print(row_side_pixels)
-    print(col_side_pixels)
+
     print(img.shape)
 
-    img = img[top_left_corner:top_left_corner+row_side_pixels, top_left_corner:top_left_corner+col_side_pixels]
+    img = img[top_left_corner:top_left_corner+row_px, top_left_corner:top_left_corner+col_px]
     #print(img.shape)
     #sys.exit(0)
     return img
