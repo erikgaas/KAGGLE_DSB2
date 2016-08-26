@@ -253,7 +253,7 @@ def calc_stupid_intersection(p1, p2, p3, p4):
 
 
 def calculate_consistent_square(img, geom, center):
-    square_dim = 150.0
+    square_dim = 90.0
     row_spacing = geom['PixelSpacing'][0]
     col_spacing = geom['PixelSpacing'][1]
 
