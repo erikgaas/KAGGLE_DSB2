@@ -244,17 +244,17 @@ def calculate_consistent_square(img, geom, center):
     # col_side_pixels = round(square_dim / col_px)
 
 
-    # print(row_spacing)
-    # print(col_spacing)
-    # print(row_px)
-    # print(col_px)
-    # print(top_left_corner)
+    print(row_spacing)
+    print(col_spacing)
+    print(row_px)
+    print(col_px)
+    print(top_left_corner)
 
-    # print(img.shape)
+    print(img.shape)
 
     img = img[top_left_corner[0]:top_left_corner[0]+row_px, top_left_corner[1]:top_left_corner[1]+col_px]
-    #print(img.shape)
-    #sys.exit(0)
+    print(img.shape)
+    sys.exit(0)
     return img
 
 
