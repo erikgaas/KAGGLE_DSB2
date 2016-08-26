@@ -268,7 +268,7 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom):
 
 
     center = seg_intersect([points[1], points[0]], 
-                            [points[3], points[2])],
+                            [points[3], points[2]],
                             [points[5], points[4]],
                             [points[7], points[6]])
 
