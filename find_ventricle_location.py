@@ -380,7 +380,7 @@ def find_geometry_params(start, end, split, input_data_path, output_data_path):
     f.close()
 
 # Put train and validate folders here
-input_data_path = '..'
+input_data_path = '../data'
 # Results will be stored in this folder
 output_data_path = '/scratch/gaas0012/calc'
 
