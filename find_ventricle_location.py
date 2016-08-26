@@ -267,10 +267,10 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom):
     img = convert_to_grayscale_with_increase_brightness_fast(ds.pixel_array, 1)
 
 
-    center = seg_intersect([points[1], points[0]], 
-                            [points[3], points[2]],
-                            [points[5], points[4]],
-                            [points[7], points[6]])
+    center = seg_intersect(np.array([points[1], points[0]]), 
+                            np.array([points[3], points[2]]),
+                            np.array([points[5], points[4]]),
+                            np.array([points[7], points[6]]))
 
     img = calculate_consistent_square(img, geom, center)
     #cv2.circle(img, (int(round(point[1], 0)), int(round(point[0], 0))), 5, 255, 3)
