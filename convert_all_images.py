@@ -11,7 +11,7 @@ for ind, i in enumerate(all_pics):
 	if ind % 1000 == 0:
 		print(ind)
 	im = np.asarray(Image.open(i))
-	ls.append(pixels)
+	ls.append(im)
 
 
 result = np.vstack(ls)
