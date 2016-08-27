@@ -1,5 +1,5 @@
 import glob
-import Image
+from PIL import Image
 import numpy as np
 pic_path = '/scratch/gaas0012/calc/center_find/*'
 
