@@ -300,7 +300,8 @@ def draw_center_for_check(dcm_path, id, sax, point, points, geom, dcm_ext):
     #cv2.line(img, (points[1], points[0]), (points[3], points[2]), 127, thickness=2)
     #cv2.line(img, (points[5], points[4]), (points[7], points[6]), 127, thickness=2)
     # show_image(img)
-    cv2.resize(img, (120, 120))
+    img = cv2.resize(img, (120, 120))
+    print(type(img1))
     if center[0] > 0 and center[1] > 0:
         cv2.imwrite(os.path.join(debug_folder, str(id) + '_' + sax + '_' + dcm_ext + '.jpg'), img)
     else:
@@ -336,7 +337,7 @@ def get_centers_for_test(id, geom, debug):
 
                         curr_paths = glob.glob(str(os.sep).join(my_path[0:-1] + ['*']))
                         for each_file in curr_paths:
-                            dcm_file_ext = each_file[-1].split('.')[0]
+                            dcm_file_ext = each_file.split(os.sep)[-1].split('.')[0]
                             draw_center_for_check(each_file, id, el, center[el],
                                           (point_ch2_1_row, point_ch2_1_col, point_ch2_2_row, point_ch2_2_col,
                                            point_ch4_1_row, point_ch4_1_col, point_ch4_2_row, point_ch4_2_col), geom[el], dcm_file_ext)
