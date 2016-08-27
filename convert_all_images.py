@@ -11,7 +11,7 @@ for ind, i in enumerate(all_pics):
 	if ind % 1000 == 0:
 		print(ind)
 	im = np.asarray(Image.open(i))
-	ls.append(np.reshape(im, (120,120,1))
+	ls.append(np.reshape(im, (120,120,1)))
 
 
 result = np.stack(ls)
