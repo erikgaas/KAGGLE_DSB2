@@ -10,8 +10,7 @@ ls = []
 for ind, i in enumerate(all_pics):
 	if ind % 1000 == 0:
 		print(ind)
-	im = Image.open(i)
-	pixels = im.load()
+	im = np.asarray(Image.open(i))
 	ls.append(pixels)
 
 
