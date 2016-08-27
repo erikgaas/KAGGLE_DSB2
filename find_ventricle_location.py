@@ -332,8 +332,8 @@ def get_centers_for_test(id, geom, debug):
                         my_path = geom[el]['Path']
                         my_path = my_path.split(os.sep)
                         
-                        print(os.sep, my_path[0:-1])
-                        curr_paths = glob.glob(str(os.sep).join(my_path[0:-1]))
+
+                        curr_paths = glob.glob(str(os.sep).join(my_path[0:-1] + ['*']))
                         for each_file in curr_paths:
                             dcm_file_ext = each_file[-1].split('.')[0]
                             draw_center_for_check(each_file, id, el, center[el],
